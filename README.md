@@ -1,1 +1,1 @@
-# coding-standard
+# Webware Coding Standard
