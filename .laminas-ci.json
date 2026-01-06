@@ -1,0 +1,12 @@
+{
+    "additional_checks": [
+        {
+            "name": "PHP CS Fixer",
+            "job": {
+                "php": "8.4",
+                "dependencies": "latest",
+                "command": "composer require --dev friendsofphp/php-cs-fixer && vendor/bin/php-cs-fixer check"
+            }
+        }
+    ]
+}
