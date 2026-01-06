@@ -1,0 +1,53 @@
+{
+    "name": "webware/coding-standard",
+    "description": "Coding standard for Webware projects.",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "webware",
+        "webware coding-standard"
+    ],
+    "authors": [
+        {
+            "name": "Joey (aka Tyrsson) Smith",
+            "email": "jsmith@webinertia.net",
+            "homepage": "https://github.com/tyrsson/coding-standard/discussions",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "platform": {
+            "php": "8.2.99"
+        },
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true
+        }
+    },
+    "require": {
+        "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
+        "ext-tokenizer": "*",
+        "friendsofphp/php-cs-fixer": "^3.92.3"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Webware\\CodingStandard\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Webware\\CodingStandard\\": "test/"
+        }
+    },
+    "scripts": {
+        "check": [
+            "@cs-check"
+        ],
+        "cs-check": "vendor/bin/php-cs-fixer check",
+        "cs-fix": "vendor/bin/php-cs-fixer fix"
+    }
+}
