@@ -5,36 +5,27 @@ declare(strict_types=1);
 use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
 use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
+use Webware\CodingStandard\WebwareCopyRight;
+use Webware\CodingStandard\Webware1x0Set;
 
-$year = date('Y');
-
-$fileHeader = <<<HEADER
-    This file is part of Webware Coding Standard.
-
-    Copyright (c) {$year} Joey Smith <jsmith@webinertia.net>
-
-    For the full copyright and license information, please view the LICENSE
-    file that was distributed with this source code.
-    HEADER;
-
-$ruleSet = require 'src/ruleset.php';
+$composerData = json_decode(file_get_contents('composer.json'), true);
 
 return (new Config())
+    ->registerCustomRuleSets([
+        new WebwareCopyRight(
+            packageName: $composerData['name'],
+            authorName: $composerData['authors'][0]['name'],
+            authorEmail: $composerData['authors'][0]['email'],
+            minYear: '2026',
+        ),
+        new Webware1x0Set(),
+    ])
     ->setParallelConfig(ParallelConfigFactory::detect()) // @TODO 4.0 no need to call this manually
     ->setRiskyAllowed(true)
-    ->setRules(
-        array_merge(
-            $ruleSet,
-            [
-                'header_comment' => [
-                    'header'       => $fileHeader,
-                    'comment_type' => 'PHPDoc',
-                    'location'     => 'after_declare_strict',
-                    'separate'     => 'both',
-                ],
-            ]
-        )
-    )
+    ->setRules([
+        '@Webware/copyright-header'    => true,
+        '@Webware/coding-standard-1.0' => true,
+    ])
     // 💡 by default, Fixer looks for `*.php` files excluding `./vendor/` - here, you can groom this config
     ->setFinder(
         (new Finder())
