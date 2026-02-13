@@ -182,9 +182,6 @@ final class Webware1x0Set implements RuleSetDefinitionInterface
             ],
             'no_spaces_after_function_name'                    => true,
             'no_useless_sprintf'                               => true,
-            'nullable_type_declaration_for_default_null_value' => [
-                'use_nullable_type_declaration' => true,
-            ],
             'return_type_declaration'                          => [
                 'space_before' => 'none',
             ],
