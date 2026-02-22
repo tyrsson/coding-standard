@@ -67,7 +67,7 @@ final class Webware1x0Set implements RuleSetDefinitionInterface
             ],
             // Attribute Notation
             'attribute_empty_parentheses'                   => [
-                'use_parentheses' => true,
+                'use_parentheses' => false,
             ],
             // Casing
             'constant_case'                                 => [
