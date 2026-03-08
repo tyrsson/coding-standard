@@ -516,6 +516,7 @@ final class Webware1x0Set implements RuleSetDefinitionInterface
             ],
             'phpdoc_to_comment'                             => [
                 'ignored_tags' => [
+                    'var',
                     'psalm-suppress',
                     'phpstan-ignore-line',
                     'phpstan-ignore-next-line',
